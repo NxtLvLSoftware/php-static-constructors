@@ -1,0 +1,20 @@
+# Common IDEs
+.idea/
+*.iml
+nbproject/*
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Mac crap
+.DS_Store
+/nbproject/private/
+
+# Composer
+vendor/*
+
+# PHPUnit
+.phpunit.result.cache

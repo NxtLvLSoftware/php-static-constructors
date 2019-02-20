@@ -1,0 +1,30 @@
+{
+    "name": "nxtlvlsoftware/static-constructors",
+    "description": "Brings static class constructors to PHP!",
+    "type": "library",
+    "license": "Unlicense",
+    "authors": [
+        {
+            "name": "Jack Noordhuis",
+            "email": "daswaggamer@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "nxtlvlsoftware\\statics\\": "src"
+        },
+        "files": [
+            "hook.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "nxtlvlsoftware\\tests\\statics\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
