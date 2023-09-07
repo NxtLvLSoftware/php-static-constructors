@@ -1,20 +1,100 @@
-# Common IDEs
-.idea/
-*.iml
-nbproject/*
+# Project specific files
 
-# Windows image file caches
-Thumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Mac crap
-.DS_Store
-/nbproject/private/
-
-# Composer
+## Composer
+composer.lock
 vendor/*
 
-# PHPUnit
-.phpunit.result.cache
+## PHPUnit
+.phpunit/*
+
+# PHPStom specific files
+.idea
+obfuscation-exemptions.txt
+
+## File-based project format:
+*.iws
+
+
+# NetBeans specific files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+
+# Sublime Text specific files
+
+## Cache files
+*.tmllanguage.cache
+*.tmpreferances.cache
+*.stTheme.cache
+
+## Workspace files are user-specific
+*.sublime-project
+
+
+# Visual Studio Code specific files
+
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensons.json
+
+
+# macOS specific files
+
+## General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+## Icon must end with two \r
+Icon
+
+
+## Thumbnails
+._*
+
+## Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.Volume.icns
+.com.apple.timemachine.donotpreset
+
+## Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+# Windows specific files
+
+## Windows thumbnail cache files
+Thumbs.db
+ethumbs.db
+ethumbs_vista.db
+
+## Dump file
+*.stackdump
+
+## Folder config file
+Desktop.ini
+
+## Recycle bin used on share file systems
+$RECYCLE.BIN/
+
+## Windows installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+## Windows shortcuts
+*.lnk
