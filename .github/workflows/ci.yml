@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [dev]
+    branches: [staging]
   pull_request:
     branches: [dev]
 
@@ -13,8 +13,8 @@ env:
   GITHUB_ACTIONS: true
 
 jobs:
-  phpstan:
-    name: PhpStan Analysis
+  test:
+    name: Test (PhpStan + PhpUnit)
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -47,40 +47,4 @@ jobs:
         run: composer install --prefer-dist --no-interaction
 
       - name: Run PHPStan
-        run: composer analyse-ci
-
-  phpunit:
-    name: PhpUnit Tests
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    strategy:
-      fail-fast: false
-      matrix:
-        image: [ubuntu-latest]
-        php-version: [8.2.0, 8.2.9]
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup PHP ${{ matrix.node-version }} with Xdebug
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.node-version }}
-          tools: composer
-
-      - name: Restore Composer package cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cache/composer/files
-            ~/.cache/composer/vcs
-          key: "composer-v2-cache-${{ matrix.php-version }}-${{ hashFiles('./composer.json') }}"
-          restore-keys: |
-            composer-v2-cache-
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-interaction
-
-      - name: Run PhpUnit
-        run: composer paratest-ci
+        run: composer test-ci

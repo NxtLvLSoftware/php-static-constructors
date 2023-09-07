@@ -17,8 +17,11 @@
     "paratest": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest",
     "paratest-ci": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --fail-on-warning tests/phpunit",
     "coverage": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --coverage-html ./.phpunit/coverage",
+    "coverage-ci": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --fail-on-warning --coverage-html ./.phpunit/coverage",
     "coverage-phpunit": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit --coverage-html ./.phpunit/coverage",
-    "test": "composer analyse && composer paratest"
+    "coverage-phpunit-ci": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit --fail-on-warning --coverage-html ./.phpunit/coverage",
+    "test": "composer analyse && composer paratest",
+    "test-ci": "composer analyse-ci && composer paratest-ci"
   },
   "autoload": {
     "psr-4": {
