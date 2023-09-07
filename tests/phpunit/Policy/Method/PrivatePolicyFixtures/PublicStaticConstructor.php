@@ -12,7 +12,7 @@ namespace NxtLvlSoftware\StaticConstructors\Tests\Policy\Method\PrivatePolicyFix
 
 use NxtLvlSoftware\StaticConstructors\Tests\Policy\Method\PrivatePolicyFixtures\Traits\PrivatePolicyFixture;
 
-class PublicStaticConstructor {
+final class PublicStaticConstructor {
 	use PrivatePolicyFixture;
 
 	public static function PublicStaticConstructor(): void {

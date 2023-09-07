@@ -21,7 +21,7 @@ use NxtLvlSoftware\StaticConstructors\Tests\Policy\DefaultPolicyFixtures\PublicS
 use NxtLvlSoftware\StaticConstructors\Tests\TestCase;
 use Throwable;
 
-class DefaultPolicyTest extends TestCase {
+final class DefaultPolicyTest extends TestCase {
 
 	public function setUp(): void {
 		parent::setUp();

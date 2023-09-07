@@ -12,7 +12,7 @@ namespace NxtLvlSoftware\StaticConstructors\Tests\Policy\DefaultPolicyFixtures;
 
 use NxtLvlSoftware\StaticConstructors\Tests\Policy\DefaultPolicyFixtures\Traits\DefaultPolicyTestFixture;
 
-class ChildStaticConstructor extends ParentStaticConstructor {
+final class ChildStaticConstructor extends ParentStaticConstructor {
 	use DefaultPolicyTestFixture;
 
 	private static function ParentStaticConstructor(): void {

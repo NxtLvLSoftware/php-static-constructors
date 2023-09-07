@@ -12,7 +12,7 @@ namespace NxtLvlSoftware\StaticConstructors\Tests\LoaderFixtures;
 
 use NxtLvlSoftware\StaticConstructors\Tests\LoaderFixtures\Traits\LoaderTestFixture;
 
-class PrivateStaticConstructor {
+final class PrivateStaticConstructor {
 	use LoaderTestFixture;
 
 	private static function PrivateStaticConstructor(): void {

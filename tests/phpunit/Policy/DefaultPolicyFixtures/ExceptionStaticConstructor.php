@@ -13,7 +13,7 @@ namespace NxtLvlSoftware\StaticConstructors\Tests\Policy\DefaultPolicyFixtures;
 use BadMethodCallException;
 use NxtLvlSoftware\StaticConstructors\Tests\Policy\DefaultPolicyFixtures\Traits\DefaultPolicyTestFixture;
 
-class ExceptionStaticConstructor {
+final class ExceptionStaticConstructor {
 	use DefaultPolicyTestFixture;
 
 	/**

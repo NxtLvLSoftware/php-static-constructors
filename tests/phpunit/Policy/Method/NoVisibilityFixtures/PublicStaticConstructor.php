@@ -12,7 +12,7 @@ namespace NxtLvlSoftware\StaticConstructors\Tests\Policy\Method\NoVisibilityFixt
 
 use NxtLvlSoftware\StaticConstructors\Tests\Policy\Method\NoVisibilityFixtures\Traits\NoVisibilityFixture;
 
-class PublicStaticConstructor {
+final class PublicStaticConstructor {
 	use NoVisibilityFixture;
 
 	public static function PublicStaticConstructor(): void {
