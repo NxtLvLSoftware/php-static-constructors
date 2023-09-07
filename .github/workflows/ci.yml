@@ -46,5 +46,5 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction
 
-      - name: Run PHPStan
+      - name: Run Tests
         run: composer test-ci
