@@ -7,7 +7,7 @@ on:
     branches: [dev]
 
 permissions:
-  contents: [read]
+  contents: read
 
 env:
   GITHUB_ACTIONS: true
