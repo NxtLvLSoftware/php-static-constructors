@@ -23,6 +23,9 @@ use function spl_autoload_functions;
 use function spl_autoload_register;
 use function spl_autoload_unregister;
 
+/**
+ * TODO: Documentation
+ */
 final class Loader {
 
 	public const DEFAULT_CLASS_POLICIES = [

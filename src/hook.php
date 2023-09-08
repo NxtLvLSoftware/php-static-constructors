@@ -8,6 +8,9 @@ declare(strict_types=1);
  * Freely available to use under the terms of the MIT license.
  */
 
+/**
+ * TODO: Documentation
+ */
 $hook = static function(string $key = 'DISABLE_STATIC_CONSTRUCTOR_HOOK'): void {
 	$disabled = $_SERVER[$key] ?? $_ENV[$key] ?? defined($key);
 	if(!$disabled) {

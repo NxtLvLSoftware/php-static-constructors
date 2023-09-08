@@ -13,6 +13,9 @@ namespace NxtLvlSoftware\StaticConstructors\Policy\Class;
 use ReflectionClass;
 use ReflectionMethod;
 
+/**
+ * TODO: Documentation
+ */
 final class SameNameAsClassPolicy implements StaticConstructorClassPolicy {
 
 	public static function methodFor(ReflectionClass $class): ?ReflectionMethod {

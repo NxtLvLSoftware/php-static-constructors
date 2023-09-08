@@ -12,6 +12,9 @@ namespace NxtLvlSoftware\StaticConstructors\Policy\Method;
 
 use ReflectionMethod;
 
+/**
+ * TODO: Documentation
+ */
 final class NoArgumentsMethodPolicy implements StaticConstructorMethodPolicy {
 
 	public static function meetsRequirements(ReflectionMethod $method): bool {

@@ -13,6 +13,9 @@ namespace NxtLvlSoftware\StaticConstructors\Policy\Method\Visibility;
 use NxtLvlSoftware\StaticConstructors\Policy\Method\StaticConstructorMethodPolicy;
 use ReflectionMethod;
 
+/**
+ * TODO: Documentation
+ */
 abstract class VisibilityMethodPolicy implements StaticConstructorMethodPolicy {
 
 	protected const VISIBILITY = ConstructorVisibility::None;

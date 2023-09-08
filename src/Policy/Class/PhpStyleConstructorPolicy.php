@@ -13,6 +13,9 @@ namespace NxtLvlSoftware\StaticConstructors\Policy\Class;
 use ReflectionClass;
 use ReflectionMethod;
 
+/**
+ * TODO: Documentation
+ */
 final class PhpStyleConstructorPolicy implements StaticConstructorClassPolicy {
 
 	private const CONSTRUCTOR_METHOD_NAME = '__constructStatic';

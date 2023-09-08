@@ -10,6 +10,9 @@ declare(strict_types=1);
 
 namespace NxtLvlSoftware\StaticConstructors\Policy\Method\Visibility;
 
+/**
+ * TODO: Documentation
+ */
 final class ProtectedVisibilityPolicy extends VisibilityMethodPolicy {
 
 	protected const VISIBILITY = ConstructorVisibility::Protected;

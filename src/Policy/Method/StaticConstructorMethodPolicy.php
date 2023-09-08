@@ -12,6 +12,9 @@ namespace NxtLvlSoftware\StaticConstructors\Policy\Method;
 
 use ReflectionMethod;
 
+/**
+ * TODO: Documentation
+ */
 interface StaticConstructorMethodPolicy {
 
 	/**
