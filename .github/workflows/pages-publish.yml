@@ -24,8 +24,12 @@ jobs:
         with:
           ref: staging
           sparse-checkout: |
+            .github/pages/_config.yml
             README.md
           sparse-checkout-cone-mode: false
+
+      - name: Move config
+        run: mv .github/pages/_config.yml ./_config.yml
 
       - uses: actions/upload-artifact@v3
         with:
@@ -43,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup PHP ${{ matrix.node-version }} with Xdebug
+      - name: Setup PHP 8.2.9 with Xdebug
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
@@ -56,7 +60,7 @@ jobs:
           path: |
             ~/.cache/composer/files
             ~/.cache/composer/vcs
-          key: "composer-v2-cache-${{ matrix.php-version }}-${{ hashFiles('./composer.json') }}"
+          key: "composer-v2-cache-8.2.9-${{ hashFiles('./composer.json') }}"
           restore-keys: |
             composer-v2-cache-
 
@@ -82,7 +86,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup PHP ${{ matrix.node-version }} with Xdebug
+      - name: Setup PHP 8.2.9 with Xdebug
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
@@ -94,7 +98,7 @@ jobs:
           path: |
             ~/.cache/composer/files
             ~/.cache/composer/vcs
-          key: "composer-v2-cache-${{ matrix.php-version }}-${{ hashFiles('./composer.json') }}"
+          key: "composer-v2-cache-8.2.9-${{ hashFiles('./composer.json') }}"
           restore-keys: |
             composer-v2-cache-
 
