@@ -55,11 +55,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
-    on:
-      push:
-        branches: [ dev ]
-
     steps:
+      - if: ${{ github.event_name == 'push' }}
       - uses: actions/checkout@v3
 
       - name: Create Pull Request
