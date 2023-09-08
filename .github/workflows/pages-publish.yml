@@ -102,7 +102,7 @@ jobs:
         run: composer install --prefer-dist --no-interaction
 
       - name: Install phpDocumentor
-        run: phive install --no-progress install --trust-gpg-keys 8AC0BAA79732DD42 phpDocumentor
+        run: phive --no-progress install --trust-gpg-keys 8AC0BAA79732DD42 phpDocumentor
 
       - name: Generate phpDocumentor html
         run: php tools/phpDocumentor run -d ./src -t ./docs/static-html
