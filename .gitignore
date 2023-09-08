@@ -7,6 +7,14 @@ vendor/*
 ## PHPUnit
 .phpunit/*
 
+## phive
+.phive/*
+tools/*
+
+## phpDocumentor
+.phpdoc/*
+docs-build/*
+
 # PHPStom specific files
 .idea
 obfuscation-exemptions.txt

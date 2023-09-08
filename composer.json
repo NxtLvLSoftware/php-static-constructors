@@ -10,18 +10,19 @@
     }
   ],
   "scripts": {
+    "test": "composer analyse && composer paratest",
+    "test-ci": "composer analyse-ci && composer paratest-ci",
     "analyse": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpstan analyse --memory-limit=2G",
     "analyse-ci": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpstan analyse --no-progress --memory-limit=2G",
-    "phpunit": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit",
-    "phpunit-ci": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit --fail-on-warning tests/phpunit",
     "paratest": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest",
     "paratest-ci": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --fail-on-warning tests/phpunit",
     "coverage": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --coverage-html ./.phpunit/coverage",
-    "coverage-ci": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --fail-on-warning --coverage-html ./.phpunit/coverage/static-html",
-    "coverage-phpunit": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit --coverage-html ./.phpunit/coverage/static-html",
-    "coverage-phpunit-ci": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit --fail-on-warning --coverage-html ./.phpunit/coverage/static-html",
-    "test": "composer analyse && composer paratest",
-    "test-ci": "composer analyse-ci && composer paratest-ci"
+    "coverage-ci": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --fail-on-warning --coverage-html ./.phpunit/coverage && php .github/workflows/update-html-links.php -t ./.phpunit/coverage",
+    "install-php-documentor": "phive --no-progress install --trust-gpg-keys 8AC0BAA79732DD42 phpDocumentor@3.4.1",
+    "run-php-documentor": "tools/phpdocumentor run",
+    "run-php-documentor-ci": "tools/phpdocumentor run -n --force && php .github/workflows/update-html-links.php -t ./docs-build",
+    "phpunit": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit",
+    "phpunit-ci": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit --fail-on-warning tests/phpunit"
   },
   "autoload": {
     "psr-4": {

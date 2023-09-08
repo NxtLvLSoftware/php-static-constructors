@@ -10,6 +10,8 @@ parameters:
 	scanDirectories:
 		- src
 		- tests/phpunit
+	scanFiles:
+		- .github/workflows/update-html-links.php
 	paths:
 		- src
 		- tests/phpunit

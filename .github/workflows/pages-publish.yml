@@ -69,7 +69,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: pages-coverage-html
-          path: .phpunit/coverage/static-html
+          path: .phpunit/coverage
 
   docs:
     name: Docs
@@ -102,15 +102,15 @@ jobs:
         run: composer install --prefer-dist --no-interaction
 
       - name: Install phpDocumentor
-        run: phive --no-progress install --trust-gpg-keys 8AC0BAA79732DD42 phpDocumentor
+        run: composer install-php-documentor
 
       - name: Generate phpDocumentor html
-        run: php tools/phpDocumentor run -d ./src -t ./docs/static-html
+        run: composer run-php-documentor-ci
 
       - uses: actions/upload-artifact@v3
         with:
           name: pages-docs-html
-          path: ./docs/static-html
+          path: ./docs-build
 
   package:
     name: Package
