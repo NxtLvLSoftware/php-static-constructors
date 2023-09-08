@@ -10,14 +10,14 @@ permissions:
 env:
   GITHUB_ACTIONS: true
 
-strategy:
-  fail-fast: true
-
 jobs:
   index:
     name: Generate main page
     runs-on: ubuntu-latest
     timeout-minutes: 5
+
+    strategy:
+      fail-fast: true
 
     steps:
       - uses: actions/checkout@v4
@@ -36,6 +36,9 @@ jobs:
     name: Coverage
     runs-on: ubuntu-latest
     timeout-minutes: 5
+
+    strategy:
+      fail-fast: true
 
     steps:
       - uses: actions/checkout@v3
@@ -72,6 +75,9 @@ jobs:
     name: Docs
     runs-on: ubuntu-latest
     timeout-minutes: 5
+
+    strategy:
+      fail-fast: true
 
     steps:
       - uses: actions/checkout@v3
@@ -112,6 +118,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
+    strategy:
+      fail-fast: true
+
     steps:
       - uses: actions/download-artifact@v3
         with:
@@ -139,6 +148,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
+    strategy:
+      fail-fast: true
+
     permissions:
       pages: write
       id-token: write
@@ -146,9 +158,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-    strategy:
-      fail-fast: true
 
     steps:
       - name: Deploy to GitHub Pages
