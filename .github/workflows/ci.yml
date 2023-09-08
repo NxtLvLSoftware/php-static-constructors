@@ -48,3 +48,23 @@ jobs:
 
       - name: Run Tests
         run: composer test-ci
+
+  stage:
+    name: Stage changes as pull request
+    needs: [test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    on:
+      push:
+        branches: [ dev ]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: staging
+          title: Merge dev changes to staging
+          assignees: JackNoordhuis
