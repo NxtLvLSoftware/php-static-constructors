@@ -1,0 +1,158 @@
+name: Publish Pages
+
+on:
+  push:
+    branches: [staging]
+
+permissions:
+  contents: write
+
+env:
+  GITHUB_ACTIONS: true
+
+strategy:
+  fail-fast: true
+
+jobs:
+  index:
+    name: Generate main page
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: staging
+          sparse-checkout: |
+            README.md
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pages-index-html
+          path: ./
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP ${{ matrix.node-version }} with Xdebug
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          coverage: xdebug
+          tools: composer
+
+      - name: Restore Composer package cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/composer/files
+            ~/.cache/composer/vcs
+          key: "composer-v2-cache-${{ matrix.php-version }}-${{ hashFiles('./composer.json') }}"
+          restore-keys: |
+            composer-v2-cache-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Generate coverage html
+        run: composer coverage-ci
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pages-coverage-html
+          path: .phpunit/coverage/static-html
+
+  docs:
+    name: Docs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP ${{ matrix.node-version }} with Xdebug
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          tools: composer, phive
+
+      - name: Restore Composer package cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/composer/files
+            ~/.cache/composer/vcs
+          key: "composer-v2-cache-${{ matrix.php-version }}-${{ hashFiles('./composer.json') }}"
+          restore-keys: |
+            composer-v2-cache-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Install phpDocumentor
+        run: phive install --force-accept-unsigned phpDocumentor
+
+      - name: Generate phpDocumentor html
+        run: phpdoc run -d ./src -t ./docs/static-html
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pages-docs-html
+          path: ./docs/static-html
+
+  package:
+    name: Package site
+    needs: [index, coverage, docs]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: pages-index-html
+          path: ./
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: pages-coverage-html
+          path: ./coverage
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: pages-docs-html
+          path: ./docs
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: github-pages
+          path: ./
+
+  publish:
+    name: Publish pages site
+    needs: [package]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    strategy:
+      fail-fast: true
+
+    steps:
+
+      steps:
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v2
