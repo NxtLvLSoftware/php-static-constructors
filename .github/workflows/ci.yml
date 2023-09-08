@@ -59,6 +59,13 @@ jobs:
       - run: 'echo "Staging dev changes"'
         if: ${{ github.event_name == 'push' }}
       - uses: actions/checkout@v3
+        with:
+          ref: dist
+
+      - name: Reset branch
+        run: |
+          git fetch origin dev:dev
+          git reset --hard dev
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
