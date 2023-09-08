@@ -15,7 +15,7 @@ env:
 jobs:
   test:
     name: Test (PhpStan + PhpUnit)
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.image }}
     timeout-minutes: 5
 
     strategy:
@@ -27,10 +27,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup PHP ${{ matrix.node-version }} with Xdebug
+      - name: Setup PHP ${{ matrix.php-version }} with Xdebug
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.node-version }}
+          php-version: ${{ matrix.php-version }}
           tools: composer
 
       - name: Restore Composer package cache
