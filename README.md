@@ -13,8 +13,9 @@
 <h4 align="center" style="font-style: italic;">
   Brings static class initialization to PHP!
 </h4>
-
-<br /><hr /><br />
+<br>
+<hr>
+<br>
 
 * [About](#about)
 * [Installation](#installation)
@@ -24,7 +25,9 @@
   * [Issues](#issues)
 * [License](#license-information)
 
-<br /><hr /><br />
+<br>
+<hr>
+<br>
 
 ### About
 

@@ -1,3 +1,6 @@
+title: static-constructors
+email: me@jacknoordhuis.net
+
 lsi: false
 safe: true
 source: ./
@@ -8,4 +11,3 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
-keep_files: [docs/, coverage/]
