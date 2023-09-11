@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$opts of function NxtLvlSoftware\\\\StaticConstructors\\\\Build\\\\UpdateHtmlLinks\\\\main expects array\\{t\\?\\: string, target\\?\\: string\\}, \\(array\\<string, array\\<int, mixed\\>\\|string\\|false\\>\\|false\\) given\\.$#"
+			count: 1
+			path: ../../../.github/workflows/scripts/fix-coverage-asset-paths.php
+
+		-
+			message: "#^Parameter \\#1 \\$opts of function NxtLvlSoftware\\\\StaticConstructors\\\\Build\\\\UpdateHtmlLinks\\\\main expects array\\{t\\?\\: string, target\\?\\: string\\}, \\(array\\<string, array\\<int, mixed\\>\\|string\\|false\\>\\|false\\) given\\.$#"
+			count: 1
+			path: ../../../.github/workflows/scripts/update-html-links.php
