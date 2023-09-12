@@ -49,7 +49,9 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: pages-index-html
-          path: ./_site
+          path: |
+            ./_site
+            !./_site/**/*.md
 
   coverage:
     name: Coverage
@@ -162,7 +164,7 @@ jobs:
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-pages-artifact@v2
         with:
           name: github-pages
           path: ./
