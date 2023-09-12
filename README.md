@@ -19,7 +19,7 @@
     <a href="https://nxtlvlsoftware.github.io/php-static-constructors/coverage/"><img src="https://nxtlvlsoftware.github.io/php-static-constructors/coverage/badge.svg" alt="Coverage Status"></a>
     <a href="https://packagist.org/packages/nxtlvlsoftware/static-constructors"><img src="https://img.shields.io/packagist/dt/NxtLvlSoftware/static-constructors.svg" alt="Total Downloads"></a>
     <a href="https://github.com/NxtLvlSoftware/php-static-constructors/releases"><img src="https://img.shields.io/packagist/v/NxtLvlSoftware/static-constructors.svg" alt="Latest Release"></a>
-    <a href="https://github.com/NxtLvlSoftware/php-static-constructors/blob/dev/LICENSE"><img src="https://img.shields.io/packagist/l/NxtLvlSoftware/static-constructors.svg" alt="License"></a>
+    <a href="https://github.com/NxtLvlSoftware/php-static-constructors/blob/dev/LICENSE"><img src="https://img.shields.io/packagist/l/NxtLvlSoftware/static-constructors" alt="License"></a>
 </p>
 
 <br>
