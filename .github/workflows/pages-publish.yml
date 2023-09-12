@@ -19,22 +19,39 @@ jobs:
     strategy:
       fail-fast: true
 
+    environment:
+      name: pages-build
+      url: ${{ steps.config.outputs.origin }}
+
     steps:
       - uses: actions/checkout@v4
         with:
           ref: staging
           sparse-checkout: |
             .github/pages/_config.yml
+            .github/pages/Gemfile
             README.md
           sparse-checkout-cone-mode: false
 
-      - name: Move config
-        run: mv .github/pages/_config.yml ./_config.yml
+      - name: Move pages config
+        run: |
+          mv .github/pages/_config.yml ./_config.yml
+          mv .github/pages/Gemfile ./Gemfile
+          rm -rf ./.github
+
+      - name: Setup Pages
+        id: config
+        uses: actions/configure-pages@v3
+        with:
+          generator_config_file: ./_config.yml
+
+      - name: Build Pages
+        uses: actions/jekyll-build-pages@v1
 
       - uses: actions/upload-artifact@v3
         with:
           name: pages-index-html
-          path: ./
+          path: ./_site
 
   coverage:
     name: Coverage
@@ -140,6 +157,12 @@ jobs:
         with:
           name: pages-docs-html
           path: ./docs
+
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "./" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
 
       - uses: actions/upload-artifact@v3
         with:

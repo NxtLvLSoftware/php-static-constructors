@@ -173,6 +173,8 @@ __A full copy of the license is available [here](./LICENSE).__
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 > SOFTWARE.
 
-#
+<br>
+<hr>
+<br>
 
 __A [NxtLvL Software Solutions](https://github.com/NxtLvLSoftware) product.__

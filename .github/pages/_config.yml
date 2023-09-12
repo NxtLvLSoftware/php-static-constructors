@@ -1,10 +1,14 @@
 title: static-constructors
 email: me@jacknoordhuis.net
 
+twitter_username: NxtLvlSoftware
+github_username:  NxtLvlSoftware
+
 lsi: false
 safe: true
 source: ./
 incremental: false
+theme: minima
 highlighter: rouge
 gist:
   noscript: false
