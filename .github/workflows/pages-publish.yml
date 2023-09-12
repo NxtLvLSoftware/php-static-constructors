@@ -26,7 +26,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: staging
           sparse-checkout: |
             .github/pages/_config.yml
             README.md
