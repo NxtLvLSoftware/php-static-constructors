@@ -1,9 +1,9 @@
 <p align="center">
-  <picture>
+  <a href="https://nxtlvlsoftware.github.io/php-static-constructors/"><picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/staging/.github/banner-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/staging/.github/banner-light.svg">
     <img alt="Project Banner (nxtlvlsoftware/static-constructors)" src="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/staging/.github/banner-light.svg" width="350" height="160" style="max-width: 100%;">
-  </picture>
+  </picture></a>
 </p>
 
 <h1 align="center">
@@ -13,10 +13,21 @@
 <h4 align="center" style="font-style: italic;">
   Brings static class initialization to PHP!
 </h4>
+
+<p align="center">
+    <a href="https://github.com/NxtLvlSoftware/php-static-constructors/actions"><img src="https://img.shields.io/github/actions/workflow/status/NxtLvlSoftware/php-static-constructors/ci.yml?branch=dev" alt="Build Status"></a>
+    <a href="https://nxtlvlsoftware.github.io/php-static-constructors/coverage/"><img src="https://nxtlvlsoftware.github.io/php-static-constructors/coverage/badge.svg" alt="Coverage Status"></a>
+    <a href="https://packagist.org/packages/nxtlvlsoftware/static-constructors"><img src="https://img.shields.io/packagist/dt/NxtLvlSoftware/static-constructors.svg" alt="Total Downloads"></a>
+    <a href="https://github.com/NxtLvlSoftware/php-static-constructors/releases"><img src="https://img.shields.io/packagist/v/NxtLvlSoftware/static-constructors.svg" alt="Latest Release"></a>
+    <a href="https://github.com/NxtLvlSoftware/php-static-constructors/blob/dev/LICENSE"><img src="https://img.shields.io/packagist/l/NxtLvlSoftware/static-constructors.svg" alt="License"></a>
+</p>
+
 <br>
 <hr>
 <br>
 
+* [Documentation](https://nxtlvlsoftware.github.io/php-static-constructors/docs/)
+* [Coverage Report](https://nxtlvlsoftware.github.io/php-static-constructors/coverage/)
 * [About](#about)
 * [Installation](#installation)
 * [Under The Hood](#under-the-hood)
@@ -163,7 +174,7 @@ and we'll do our best to get it sorted!
 [`nxtlvlsoftware/php-static-constructors`](https://github.com/NxtLvlSoftware/php-static-constructors)
 is open-sourced software, freely available to use under the terms of the [MIT License](https://www.techtarget.com/whatis/definition/MIT-License-X11-license-or-MIT-X-license).
 
-__A full copy of the license is available [here](./LICENSE).__
+__A full copy of the license is available [here](https://github.com/NxtLvLSoftware/php-static-constructors/blob/dev/LICENSE).__
 
 > THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 > IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

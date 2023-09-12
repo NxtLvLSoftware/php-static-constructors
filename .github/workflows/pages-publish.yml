@@ -30,7 +30,6 @@ jobs:
           sparse-checkout: |
             .github/pages/_config.yml
             README.md
-            LICENSE
           sparse-checkout-cone-mode: false
 
       - name: Move pages config
@@ -51,7 +50,6 @@ jobs:
         with:
           name: pages-index-html
           path: |
-            LICENSE
             ./_site
             !./_site/**/*.md
 
