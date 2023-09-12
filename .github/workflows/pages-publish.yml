@@ -94,7 +94,7 @@ jobs:
         with:
           report_type: html
           report: .phpunit/coverage/index.html
-          coverage_badge_path: badge.svg
+          coverage_badge_path: .phpunit/coverage/badge.svg
 
       - uses: actions/upload-artifact@v3
         with:
