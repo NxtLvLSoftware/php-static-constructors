@@ -1,0 +1,19 @@
+includes:
+	- tests/phpstan/configs/tests-baseline.neon
+	- tests/phpstan/configs/workflows-baseline.neon
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-phpunit/rules.neon
+	- vendor/phpstan/phpstan-strict-rules/rules.neon
+parameters:
+	level: 9
+	bootstrapFiles:
+		- tests/phpstan/bootstrap.php
+	scanDirectories:
+		- src
+		- tests/phpunit
+	paths:
+		- src
+		- tests/phpunit
+		- .github/workflows/scripts
+	dynamicConstantNames:
+		- \NxtLvlSoftware\StaticConstructors\DISABLE_STATIC_HOOK

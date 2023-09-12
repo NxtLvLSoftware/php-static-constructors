@@ -1,0 +1,199 @@
+name: Publish Pages
+
+on:
+  push:
+    branches: [dist]
+
+permissions:
+  contents: write
+
+env:
+  GITHUB_ACTIONS: true
+
+jobs:
+  index:
+    name: Index
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    strategy:
+      fail-fast: true
+
+    environment:
+      name: pages-build
+      url: ${{ steps.config.outputs.base_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: staging
+          sparse-checkout: |
+            .github/pages/_config.yml
+            README.md
+          sparse-checkout-cone-mode: false
+
+      - name: Move pages config
+        run: |
+          mv .github/pages/_config.yml ./_config.yml
+          rm -rf ./.github
+
+      - name: Setup Pages
+        id: config
+        uses: actions/configure-pages@v3
+        with:
+          generator_config_file: ./_config.yml
+
+      - name: Build Pages
+        uses: actions/jekyll-build-pages@v1
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pages-index-html
+          path: |
+            ./_site
+            !./_site/**/*.md
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP 8.2.9 with Xdebug
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          coverage: xdebug
+          tools: composer
+
+      - name: Restore Composer package cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/composer/files
+            ~/.cache/composer/vcs
+          key: "composer-v2-cache-8.2.9-${{ hashFiles('./composer.json') }}"
+          restore-keys: |
+            composer-v2-cache-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Generate coverage html
+        run: composer coverage-ci
+
+      - name: Generate coverage badge
+        uses: timkrase/phpunit-coverage-badge@v1.2.1
+        with:
+          report_type: html
+          report: .phpunit/coverage/index.html
+          coverage_badge_path: .phpunit/coverage/badge.svg
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pages-coverage-html
+          path: .phpunit/coverage
+
+  docs:
+    name: Docs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP 8.2.9 with Xdebug
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          tools: composer, phive
+
+      - name: Restore Composer package cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/composer/files
+            ~/.cache/composer/vcs
+          key: "composer-v2-cache-8.2.9-${{ hashFiles('./composer.json') }}"
+          restore-keys: |
+            composer-v2-cache-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Install phpDocumentor
+        run: composer install-php-documentor
+
+      - name: Generate phpDocumentor html
+        run: composer docs-ci
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pages-docs-html
+          path: ./docs-build
+
+  package:
+    name: Package
+    needs: [index, coverage, docs]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: pages-index-html
+          path: ./
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: pages-coverage-html
+          path: ./coverage
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: pages-docs-html
+          path: ./docs
+
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "./" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          name: github-pages
+          path: ./
+
+  publish:
+    name: Publish
+    needs: [package]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    strategy:
+      fail-fast: true
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

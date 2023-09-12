@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [dev, dist]
+  pull_request:
+    branches: [dev]
+
+permissions:
+  contents: read
+
+env:
+  GITHUB_ACTIONS: true
+
+jobs:
+  test:
+    name: Test (PhpStan + PhpUnit)
+    runs-on: ${{ matrix.image }}
+    timeout-minutes: 5
+
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [ubuntu-latest]
+        php-version: [8.2.0, 8.2.9]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP ${{ matrix.php-version }} with Xdebug
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: composer
+
+      - name: Restore Composer package cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/composer/files
+            ~/.cache/composer/vcs
+          key: "composer-v2-cache-${{ matrix.php-version }}-${{ hashFiles('./composer.json') }}"
+          restore-keys: |
+            composer-v2-cache-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Run Tests
+        run: composer test-ci
+
+  stage:
+    name: Stage changes as pull request
+    needs: [test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    if: github.ref == 'refs/heads/dev'
+    steps:
+      - run: 'echo "Staging dev changes"'
+        if: ${{ github.event_name == 'push' }}
+      - uses: actions/checkout@v3
+        with:
+          ref: dist
+
+      - name: Reset branch
+        run: |
+          git fetch origin dev:dev
+          git reset --hard dev
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.STAGE_DEPLOY_KEY }}
+          title: Merge dev changes to dist
+          assignees: JackNoordhuis

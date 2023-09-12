@@ -1,0 +1,106 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\LoaderFixtures\\\\PrivateStaticConstructor\\:\\:PrivateStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/LoaderFixtures/PrivateStaticConstructor.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with null will always evaluate to false\\.$#"
+			count: 1
+			path: ../../phpunit/LoaderTest.php
+
+		-
+			message: "#^Method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\LoaderTest\\:\\:getLoaderInstance\\(\\) should return NxtLvlSoftware\\\\StaticConstructors\\\\Loader\\|null but returns mixed\\.$#"
+			count: 1
+			path: ../../phpunit/LoaderTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$classPolicies of static method NxtLvlSoftware\\\\StaticConstructors\\\\Loader\\:\\:init\\(\\) expects array\\<int, class\\-string\\<NxtLvlSoftware\\\\StaticConstructors\\\\Policy\\\\Class\\\\StaticConstructorClassPolicy\\>\\>, array\\<int, string\\> given\\.$#"
+			count: 1
+			path: ../../phpunit/LoaderTest.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Class\\\\PhpStyleFixtures\\\\BothStaticConstructorsDefined\\:\\:BothStaticConstructorsDefined\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Class/PhpStyleFixtures/BothStaticConstructorsDefined.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Class\\\\PhpStyleFixtures\\\\BothStaticConstructorsDefined\\:\\:__constructStatic\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Class/PhpStyleFixtures/BothStaticConstructorsDefined.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Class\\\\PhpStyleFixtures\\\\PhpStyleStaticConstructor\\:\\:__constructStatic\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Class/PhpStyleFixtures/PhpStyleStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Class\\\\SameNameAsClassFixtures\\\\BothStaticConstructorsDefined\\:\\:BothStaticConstructorsDefined\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Class/SameNameAsClassFixtures/BothStaticConstructorsDefined.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Class\\\\SameNameAsClassFixtures\\\\BothStaticConstructorsDefined\\:\\:__constructStatic\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Class/SameNameAsClassFixtures/BothStaticConstructorsDefined.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Class\\\\SameNameAsClassFixtures\\\\SameNameAsClassStaticConstructor\\:\\:SameNameAsClassStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Class/SameNameAsClassFixtures/SameNameAsClassStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\DefaultPolicyFixtures\\\\ArgumentStaticConstructor\\:\\:ArgumentStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/DefaultPolicyFixtures/ArgumentStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\DefaultPolicyFixtures\\\\BothStaticConstructorsDefined\\:\\:BothStaticConstructorsDefined\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/DefaultPolicyFixtures/BothStaticConstructorsDefined.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\DefaultPolicyFixtures\\\\BothStaticConstructorsDefined\\:\\:__constructStatic\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/DefaultPolicyFixtures/BothStaticConstructorsDefined.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\DefaultPolicyFixtures\\\\ChildStaticConstructor\\:\\:ParentStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/DefaultPolicyFixtures/ChildStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\DefaultPolicyFixtures\\\\ExceptionStaticConstructor\\:\\:ExceptionStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/DefaultPolicyFixtures/ExceptionStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\DefaultPolicyFixtures\\\\ParentStaticConstructor\\:\\:ParentStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/DefaultPolicyFixtures/ParentStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\DefaultPolicyFixtures\\\\PrivateStaticConstructor\\:\\:PrivateStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/DefaultPolicyFixtures/PrivateStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Method\\\\NoVisibilityFixtures\\\\PrivateStaticConstructor\\:\\:PrivateStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Method/NoVisibilityFixtures/PrivateStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Method\\\\PrivatePolicyFixtures\\\\PrivateStaticConstructor\\:\\:PrivateStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Method/PrivatePolicyFixtures/PrivateStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Method\\\\ProtectedPolicyFixtures\\\\PrivateStaticConstructor\\:\\:PrivateStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Method/ProtectedPolicyFixtures/PrivateStaticConstructor.php
+
+		-
+			message: "#^Static method NxtLvlSoftware\\\\StaticConstructors\\\\Tests\\\\Policy\\\\Method\\\\PublicPolicyFixtures\\\\PrivateStaticConstructor\\:\\:PrivateStaticConstructor\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../phpunit/Policy/Method/PublicPolicyFixtures/PrivateStaticConstructor.php

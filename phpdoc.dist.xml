@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor
+	configVersion="3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://www.phpdoc.org"
+	xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/phpDocumentor/phpDocumentor/master/data/xsd/phpdoc.xsd"
+>
+	<title>static-constructors</title>
+	<paths>
+		<output>docs-build</output>
+	</paths>
+	<version number="latest">
+		<folder>latest</folder>
+		<api format="php">
+			<source dsn=".">
+				<path>src</path>
+			</source>
+			<output>package</output>
+			<default-package-name>StaticConstructors</default-package-name>
+			<include-source>true</include-source>
+			<markers>
+				<marker>TODO</marker>
+				<marker>FIXME</marker>
+			</markers>
+		</api>
+	</version>
+</phpdocumentor>

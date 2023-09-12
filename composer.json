@@ -1,30 +1,53 @@
 {
-    "name": "nxtlvlsoftware/static-constructors",
-    "description": "Brings static class constructors to PHP!",
-    "type": "library",
-    "license": "Unlicense",
-    "authors": [
-        {
-            "name": "Jack Noordhuis",
-            "email": "daswaggamer@gmail.com"
-        }
-    ],
-    "require-dev": {
-        "phpunit/phpunit": "^8"
+  "name": "nxtlvlsoftware/static-constructors",
+  "description": "Brings static class constructors to PHP!",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jack Noordhuis",
+      "email": "me@jacknoordhuis.net"
+    }
+  ],
+  "scripts": {
+    "test": "composer analyse && composer paratest",
+    "test-ci": "composer analyse-ci && composer paratest-ci",
+    "analyse": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpstan analyse --memory-limit=2G",
+    "analyse-ci": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpstan analyse --no-progress --memory-limit=2G",
+    "paratest": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest",
+    "paratest-ci": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --fail-on-warning tests/phpunit",
+    "coverage": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --coverage-html ./.phpunit/coverage",
+    "coverage-ci": "export XDEBUG_MODE=coverage && export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && paratest --fail-on-warning --coverage-html ./.phpunit/coverage && php .github/workflows/scripts/fix-coverage-asset-paths.php -t ./.phpunit/coverage && php .github/workflows/scripts/update-html-links.php -t ./.phpunit/coverage",
+    "install-php-documentor": "phive --no-progress install --trust-gpg-keys 8AC0BAA79732DD42 https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.4.1/phpDocumentor.phar",
+    "docs": "./tools/phpDocumentor run",
+    "docs-ci": "./tools/phpDocumentor run -n --force && php .github/workflows/scripts/update-html-links.php -t ./docs-build",
+    "phpunit": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit",
+    "phpunit-ci": "export DISABLE_STATIC_CONSTRUCTOR_HOOK=true && phpunit --fail-on-warning tests/phpunit"
+  },
+  "autoload": {
+    "psr-4": {
+      "NxtLvlSoftware\\StaticConstructors\\": "src"
     },
-    "autoload": {
-        "psr-4": {
-            "nxtlvlsoftware\\statics\\": "src"
-        },
-        "files": [
-            "hook.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "nxtlvlsoftware\\tests\\statics\\": "tests"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "files": [
+      "src/hook.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NxtLvlSoftware\\StaticConstructors\\Tests\\": "tests/phpunit"
+    }
+  },
+  "require": {
+    "php": "^8.2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.3.3",
+    "phpstan/phpstan": "^1.10",
+    "phpstan/phpstan-phpunit": "^1.3",
+    "phpstan/phpstan-strict-rules": "^1.5",
+    "brianium/paratest": "^7.2",
+    "phpunit/php-code-coverage": "^10.1"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
