@@ -9,7 +9,10 @@ declare(strict_types=1);
  */
 
 /**
- * TODO: Documentation
+ * Temporary callable for bootstrapping the static constructor loader.
+ *
+ * This is unset after calling to ensure it isn't available after use as
+ * this file is automatically included by the composer autoloader.
  */
 $hook = static function(string $key = 'DISABLE_STATIC_CONSTRUCTOR_HOOK'): void {
 	$disabled = $_SERVER[$key] ?? $_ENV[$key] ?? defined($key);
@@ -18,5 +21,5 @@ $hook = static function(string $key = 'DISABLE_STATIC_CONSTRUCTOR_HOOK'): void {
 	}
 };
 
-$hook();
-unset($hook);
+$hook(); // call hook function
+unset($hook); // remove hook function from runtime

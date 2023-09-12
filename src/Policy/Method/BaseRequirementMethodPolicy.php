@@ -13,11 +13,14 @@ namespace NxtLvlSoftware\StaticConstructors\Policy\Method;
 use ReflectionMethod;
 
 /**
- * Base requirments that must be enforced on any method for it to be
+ * Base requirements that must be enforced on any method for it to be
  * considered a static constructor.
  */
 final class BaseRequirementMethodPolicy implements StaticConstructorMethodPolicy {
 
+	/**
+	 * Enforces that a method is static, is not abstract and is user-defined.
+	 */
 	public static function meetsRequirements(ReflectionMethod $method): bool {
 		return $method->isStatic() && !$method->isAbstract() && $method->isUserDefined();
 	}

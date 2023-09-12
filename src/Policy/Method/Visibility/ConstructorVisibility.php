@@ -11,7 +11,9 @@ declare(strict_types=1);
 namespace NxtLvlSoftware\StaticConstructors\Policy\Method\Visibility;
 
 /**
- * TODO: Documentation
+ * Specifies valid static constructor visibility levels as an enum.
+ *
+ * {@see \NxtLvlSoftware\StaticConstructors\Policy\Method\Visibility\VisibilityMethodPolicy}
  */
 enum ConstructorVisibility {
 

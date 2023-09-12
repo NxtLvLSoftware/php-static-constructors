@@ -13,7 +13,9 @@ namespace NxtLvlSoftware\StaticConstructors\Policy\Method;
 use ReflectionMethod;
 
 /**
- * TODO: Documentation
+ * Interface defining requirements for static constructor method policies.
+ *
+ * Can be used to interact with the package and extend functionality.
  */
 interface StaticConstructorMethodPolicy {
 

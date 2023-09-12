@@ -14,12 +14,17 @@ use ReflectionClass;
 use ReflectionMethod;
 
 /**
- * TODO: Documentation
+ * Class policy for classes which define a static constructor with
+ * the `__constructStatic()` magic method.
  */
 final class PhpStyleConstructorPolicy implements StaticConstructorClassPolicy {
 
 	private const CONSTRUCTOR_METHOD_NAME = '__constructStatic';
 
+	/**
+	 * Retrieve the reflection information for a method named `__constructStatic`
+	 * if it exists.
+	 */
 	public static function methodFor(ReflectionClass $class): ?ReflectionMethod {
 		return $class->hasMethod(self::CONSTRUCTOR_METHOD_NAME) ?
 			$class->getMethod(self::CONSTRUCTOR_METHOD_NAME) : null;

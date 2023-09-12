@@ -14,10 +14,15 @@ use ReflectionClass;
 use ReflectionMethod;
 
 /**
- * TODO: Documentation
+ * Class policy for classes which define a static constructor with
+ * the same name as the class.
  */
 final class SameNameAsClassPolicy implements StaticConstructorClassPolicy {
 
+	/**
+	 * Retrieve the reflection information for a method with the same
+	 * name as the class if it exists.
+	 */
 	public static function methodFor(ReflectionClass $class): ?ReflectionMethod {
 		$name = $class->getShortName();
 		return $class->hasMethod($name) ?

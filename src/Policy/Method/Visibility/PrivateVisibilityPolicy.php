@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace NxtLvlSoftware\StaticConstructors\Policy\Method\Visibility;
 
 /**
- * TODO: Documentation
+ * Method policy for enforcing a static constructor candidate method has private visibility.
  */
 final class PrivateVisibilityPolicy extends VisibilityMethodPolicy {
 

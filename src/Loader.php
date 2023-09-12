@@ -24,15 +24,27 @@ use function spl_autoload_register;
 use function spl_autoload_unregister;
 
 /**
- * TODO: Documentation
+ * Singleton responsible for calling static constructors on classes that
+ * provide them.
+ *
+ * Uses {@link \NxtLvlSoftware\StaticConstructors\Policy\Class\StaticConstructorClassPolicy}
+ * and {@link \NxtLvlSoftware\StaticConstructors\Policy\Method\StaticConstructorMethodPolicy}
+ * to determine valid classes and methods.
  */
 final class Loader {
 
+	/**
+	 * The default class policies for finding static constructor methods.
+	 */
 	public const DEFAULT_CLASS_POLICIES = [
 		SameNameAsClassPolicy::class,
 		PhpStyleConstructorPolicy::class,
 	];
 
+	/**
+	 * The default method policies for determining validity of static constructor
+	 * candidate methods.
+	 */
 	public const DEFAULT_METHOD_POLICIES = [
 		NoArgumentsMethodPolicy::class,
 		PrivateVisibilityPolicy::class,
@@ -40,13 +52,19 @@ final class Loader {
 
 	private static self|null $instance = null;
 
+	/**
+	 * Check if {@link \NxtLvlSoftware\StaticConstructors\Loader::init()} has been called.
+	 */
 	public static function started(): bool {
 		return self::$instance !== null;
 	}
 
 	/**
-	 * @param list<class-string<\NxtLvlSoftware\StaticConstructors\Policy\Class\StaticConstructorClassPolicy>> $classPolicies
-	 * @param list<class-string<\NxtLvlSoftware\StaticConstructors\Policy\Method\StaticConstructorMethodPolicy>> $methodPolicies
+	 * Start the loader if an instance does not already exist.
+	 *
+	 * @param list<class-string<\NxtLvlSoftware\StaticConstructors\Policy\Class\StaticConstructorClassPolicy>> $classPolicies Policy class names for determining if a class has a valid static constructor method defined.
+	 * @param list<class-string<\NxtLvlSoftware\StaticConstructors\Policy\Method\StaticConstructorMethodPolicy>> $methodPolicies Policy class names for determining validity of candidate static constructor methods.
+	 * @param bool $checkLoadedClasses Should the loader check for a static constructor on classes that are already declared in the runtime?
 	 */
 	public static function init(
 		array $classPolicies = self::DEFAULT_CLASS_POLICIES,
@@ -97,8 +115,9 @@ final class Loader {
 	}
 
 	/**
-	 * Our custom autoload function. We loop over the registered loaders to load the class
-	 * then call the static constructor on the class if it was loaded.
+	 * Our custom autoload function. We loop over the registered loaders
+	 * to load the class then call the static constructor on the class
+	 * if it was loaded.
 	 *
 	 * @param class-string $className
 	 */
@@ -145,8 +164,8 @@ final class Loader {
 	}
 
 	/**
-	 * Store all the currently registered autoload functions and register this class as
-	 * the primary autoloader.
+	 * Store all the currently registered autoload functions and register
+	 * this class as the primary autoloader.
 	 */
 	private function overrideSplLoaders(): void {
 		foreach (spl_autoload_functions() as $func) {
@@ -164,6 +183,10 @@ final class Loader {
 		);
 	}
 
+	/**
+	 * Check classes already declared in the runtime for static constructor methods
+	 * and call them.
+	 */
 	private function checkLoadedClasses(): void {
 		foreach (get_declared_classes() as $className) {
 			$this->callStaticConstructor($className);

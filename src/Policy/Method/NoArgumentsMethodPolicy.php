@@ -13,10 +13,13 @@ namespace NxtLvlSoftware\StaticConstructors\Policy\Method;
 use ReflectionMethod;
 
 /**
- * TODO: Documentation
+ * Method policy for enforcing a static constructor candidate method takes no arguments (even defaulted.)
  */
 final class NoArgumentsMethodPolicy implements StaticConstructorMethodPolicy {
 
+	/**
+	 * Enforces a method has no parameters.
+	 */
 	public static function meetsRequirements(ReflectionMethod $method): bool {
 		return $method->getNumberOfParameters() === 0;
 	}
