@@ -89,6 +89,13 @@ jobs:
       - name: Generate coverage html
         run: composer coverage-ci
 
+      - name: Generate coverage badge
+        uses: timkrase/phpunit-coverage-badge@v1.2.1
+        with:
+          report_type: html
+          report_path: ./.phpunit/coverage
+          coverage_badge_path: badge.svg
+
       - uses: actions/upload-artifact@v3
         with:
           name: pages-coverage-html
