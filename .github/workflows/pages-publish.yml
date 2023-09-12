@@ -21,7 +21,7 @@ jobs:
 
     environment:
       name: pages-build
-      url: ${{ steps.config.outputs.origin }}
+      url: ${{ steps.config.outputs.base_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -29,14 +29,12 @@ jobs:
           ref: staging
           sparse-checkout: |
             .github/pages/_config.yml
-            .github/pages/Gemfile
             README.md
           sparse-checkout-cone-mode: false
 
       - name: Move pages config
         run: |
           mv .github/pages/_config.yml ./_config.yml
-          mv .github/pages/Gemfile ./Gemfile
           rm -rf ./.github
 
       - name: Setup Pages
