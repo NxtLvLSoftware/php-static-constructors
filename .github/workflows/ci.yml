@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [dev]
+    branches: [dev, dist]
   pull_request:
     branches: [dev]
 
@@ -55,6 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
+    if: github.ref == 'refs/heads/dev'
     steps:
       - run: 'echo "Staging dev changes"'
         if: ${{ github.event_name == 'push' }}
