@@ -72,7 +72,5 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.STAGE_DEPLOY_KEY }}
-          base: dev
-          branch: dist
           title: Merge dev changes to dist
           assignees: JackNoordhuis
