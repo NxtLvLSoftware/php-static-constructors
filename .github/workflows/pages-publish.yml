@@ -93,7 +93,7 @@ jobs:
         uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
           report_type: html
-          report_path: ./.phpunit/coverage
+          report: ./.phpunit/coverage
           coverage_badge_path: badge.svg
 
       - uses: actions/upload-artifact@v3
