@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://nxtlvlsoftware.github.io/php-static-constructors/"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/dist/.github/banner-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/dist/.github/banner-light.svg">
-    <img alt="Project Banner (nxtlvlsoftware/static-constructors)" src="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/dist/.github/banner-light.svg" width="350" height="160" style="max-width: 100%;">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/dist/.github/banner-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/dist/.github/banner-light.png">
+    <img alt="Project Banner (nxtlvlsoftware/static-constructors)" src="https://raw.githubusercontent.com/NxtLvLSoftware/php-static-constructors/dist/.github/banner-light.png" width="350" height="160" style="max-width: 100%;">
   </picture></a>
 </p>
 

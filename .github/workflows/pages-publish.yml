@@ -28,12 +28,14 @@ jobs:
         with:
           sparse-checkout: |
             .github/pages/_config.yml
+            .github/favicon.ico
             README.md
           sparse-checkout-cone-mode: false
 
       - name: Move pages config
         run: |
           mv .github/pages/_config.yml ./_config.yml
+          mv .github/favicon.ico ./favicon.ico
           rm -rf ./.github
 
       - name: Setup Pages
@@ -159,10 +161,18 @@ jobs:
           name: pages-coverage-html
           path: ./coverage
 
+      - name: Copy favicon to /coverage
+        run: |
+          cp ./favicon.ico ./coverage/favicon.ico
+
       - uses: actions/download-artifact@v3
         with:
           name: pages-docs-html
           path: ./docs
+
+      - name: Copy favicon to /docs
+        run: |
+          cp ./favicon.ico ./docs/favicon.ico
 
       - name: Fix permissions
         run: |
